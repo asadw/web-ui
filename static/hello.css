@@ -1,0 +1,15 @@
+.test {
+	background-color: orange;
+	padding-left: 100px;
+	text-align: center;
+}
+
+body { 
+	font-family: "Calibri";
+}
+
+h1 {
+	font-size: 22px;
+	font-style: bold;
+	padding-left: 200px;
+}
