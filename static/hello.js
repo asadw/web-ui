@@ -1,3 +1,15 @@
+
+
 $(document).ready( function () {
-    $('#asadtable').DataTable();
+	$('#asadtable').DataTable();
 } );
+
+
+function doSignIn() {
+	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+	  // Handle Errors here.
+	  var errorCode = error.code;
+	  var errorMessage = error.message;
+	  // ...
+	});
+}
