@@ -41,7 +41,7 @@ def postgres_demo(request):
         try:
             __connect(f'/cloudsql/{CONNECTION_NAME}')
         except OperationalError:
-            # If production settings fail, use local development ones
+            # If production settings fail, use local develpment ones
             __connect('127.0.0.1')
 
     # Remember to close SQL resources declared while running this function.
