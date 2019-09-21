@@ -3,13 +3,14 @@ import sqlalchemy, firebase_admin
 from os import getenv
 from psycopg2 import OperationalError
 from psycopg2.pool import SimpleConnectionPool
+import datetime
 
 # TODO(developer): specify SQL connection details
 CONNECTION_NAME = getenv(
   'INSTANCE_CONNECTION_NAME',
   'fullcourt-1227c:us-east1:fullcourt')
 DB_USER = getenv('POSTGRES_USER', 'postgres')
-DB_PASSWORD = getenv('POSTGRES_PASSWORD', 'watchdog')
+DB_PASSWORD = getenv('POSTGRES_PASSWORD', 'postgres')
 DB_NAME = getenv('POSTGRES_DATABASE', 'postgres')
 
 pg_config = {
@@ -39,7 +40,7 @@ def postgres_demo(request):
     # which helps keep your GCF instances under SQL connection limits.
     if not pg_pool:
         try:
-            __connect(f'/cloudsql/{CONNECTION_NAME}')
+            __connect('/cloudsql/{CONNECTION_NAME}')
         except OperationalError:
             # If production settings fail, use local develpment ones
             __connect('127.0.0.1')
@@ -53,7 +54,8 @@ def postgres_demo(request):
         cursor.execute('SELECT NOW();')
         results = cursor.fetchone()
         pg_pool.putconn(conn)
-        return str(results[0])
+        print(type(results[0]))
+        return results[0]
 
 
 app = Flask(__name__)
@@ -77,10 +79,12 @@ conn = psycopg2.connect(
 @app.route('/<name>', methods=['GET'])
 def hello_world(name=None):
     time = postgres_demo(None)
+    ms = time.strftime("%f")[:-3]
+    time = time.strftime("%b %d %Y %I:%M:%S%p")
     return render_template('hello.html', name=name, t=time)
 
 
 if __name__ == '__main__':
     app.run()
 
-# test comment on 5/13/19
+# test comment on 6/26/19
