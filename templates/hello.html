@@ -4,6 +4,8 @@
 		<title>FullCourt v0.0</title>
 		<meta charset="UTF-8">
 
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
 
 		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='hello.css')}}">
 		<script type="text/javascript" charset = "utf8" src="{{url_for('static', filename='hello.js')}}"></script>
@@ -23,16 +25,21 @@
 			The time is now {{t}}
 		</div>
 
-		<div class="display" id="example">
-			<ul>
-				<li>
-					test
-				</li>
-				<li>
-					testing
-				</li>
-			</ul>
-		</div>
+		<table class="display" id="asadtable">
+
+			<thead> <tr> <th>Name</th> <th>Position</th> </tr> </thead>
+
+			<tbody>
+				<tr>
+					<td>
+						test
+					</td>
+					<td>
+						testing
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</body>
 
 </html>
