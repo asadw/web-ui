@@ -6,9 +6,8 @@
 
 		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
-
-		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='hello.css')}}">
-		<script type="text/javascript" charset = "utf8" src="{{url_for('static', filename='hello.js')}}"></script>
+		<link rel="stylesheet" type="text/css" href="static/hello.css">
+		<script type="text/javascript" charset = "utf8" src="static/hello.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>		
@@ -18,11 +17,11 @@
 	<body>
 		
 		<h1>
-			Hello {{name}}
+			Hello ${name}
 		</h1>
 
 		<div class="test">
-			The time is now {{t}}
+			The time is now ${t}
 		</div>
 
 		<div class="results">
