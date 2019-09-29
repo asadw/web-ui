@@ -3,10 +3,13 @@ Testing flask web app
 """
 
 from os import getenv
-from flask import Flask, render_template
+from flask import Flask
 from passlib.hash import pbkdf2_sha256
 from psycopg2 import OperationalError
 from psycopg2.pool import SimpleConnectionPool
+from mako.template import Template
+from mako.lookup import TemplateLookup
+
 # import firebase_admin
 
 # TODO(developer): specify SQL connection details
@@ -24,7 +27,7 @@ PG_CONFIG = {
 # Connection pools reuse connections between invocations,
 # and handle dropped or expired connections automatically.
 PG_POOL = None
-
+LOOKUP = TemplateLookup(directories=['./admin/templates'])
 
 def postgres_init():
     """
@@ -74,8 +77,7 @@ def current_time():
 @APP.route('/', methods=['GET'])
 def login():
     """ login page """
-
-    return render_template('login.html')
+    return LOOKUP.get_template('login.html').render()
 
 @APP.route('/admin', methods=['GET'])
 def hello_world():
@@ -86,7 +88,7 @@ def hello_world():
     time = current_time()
     # ms = time.strftime("%f")[:-3]
     time = time.strftime("%b %d %Y %I:%M:%S%p")
-    return render_template('hello.html', name="TEST", t=time)
+    return LOOKUP.get_template('hello.html').render(name="TEST", t=time)
 
 """
 import sqlalchemy
