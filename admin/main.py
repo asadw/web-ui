@@ -10,7 +10,7 @@ from psycopg2 import OperationalError
 from psycopg2.pool import SimpleConnectionPool
 from mako.lookup import TemplateLookup
 
-# import firebase_admin
+import firebase_admin
 
 # TODO(developer): specify SQL connection details
 CONNECTION_NAME = getenv('INSTANCE_CONNECTION_NAME', 'fullcourt-1227c:us-east1:fullcourt')
