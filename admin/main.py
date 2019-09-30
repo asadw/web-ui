@@ -7,7 +7,6 @@ from flask import Flask
 from passlib.hash import pbkdf2_sha256
 from psycopg2 import OperationalError
 from psycopg2.pool import SimpleConnectionPool
-from mako.template import Template
 from mako.lookup import TemplateLookup
 
 # import firebase_admin
