@@ -11,6 +11,7 @@ from psycopg2.pool import SimpleConnectionPool
 from mako.lookup import TemplateLookup
 
 import firebase_admin
+import sys
 
 # TODO(developer): specify SQL connection details
 CONNECTION_NAME = getenv('INSTANCE_CONNECTION_NAME', 'fullcourt-1227c:us-east1:fullcourt')
@@ -27,7 +28,9 @@ PG_CONFIG = {
 # Connection pools reuse connections between invocations,
 # and handle dropped or expired connections automatically.
 PG_POOL = None
-LOOKUP = TemplateLookup(directories=['./admin/templates'])
+
+TEMPLATES = 'templates/' if sys.platform.startswith("win") else './admin/templates/'
+LOOKUP = TemplateLookup(directories=[TEMPLATES])
 
 def postgres_init():
     """
