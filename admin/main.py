@@ -14,6 +14,7 @@ import firebase_admin
 import sys
 
 # TODO(developer): specify SQL connection details
+# TODO encrypt password
 CONNECTION_NAME = getenv('INSTANCE_CONNECTION_NAME', 'fullcourt-1227c:us-east1:fullcourt')
 DB_USER = getenv('POSTGRES_USER', 'postgres')
 DB_PASSWORD = getenv('POSTGRES_PASSWORD', 'postgres')
