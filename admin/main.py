@@ -33,6 +33,7 @@ PG_POOL = None
 
 TEMPLATES = 'templates/' if sys.platform.startswith("win") else './admin/templates/'
 LOOKUP = TemplateLookup(directories=[TEMPLATES])
+APP = Flask(__name__)
 
 def postgres_init():
     """
@@ -62,8 +63,6 @@ def postgres_init():
     # Remember to close SQL resources declared while running this function.
     # Keep any declared in global scope (e.g. pg_pool) for later reuse.
 
-postgres_init()
-APP = Flask(__name__)
 
 def current_time():
     """
@@ -79,10 +78,12 @@ def current_time():
         PG_POOL.putconn(conn)
         return results[0]
 
+
 @APP.route('/', methods=['GET'])
 def login():
     """ login page """
     return LOOKUP.get_template('login.html').render()
+
 
 @APP.route('/admin', methods=['GET'])
 def hello_world():
@@ -110,5 +111,4 @@ conn = psycopg2.connect(
 # eng = sqlalchemy.create_engine('postgresql:///fullcourt')
 # con = eng.connect()
 
-if __name__ == '__main__':
-    APP.run()
+postgres_init()
