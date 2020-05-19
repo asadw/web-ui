@@ -17,8 +17,9 @@ import sys
 # TODO encrypt password
 CONNECTION_NAME = getenv('INSTANCE_CONNECTION_NAME', 'fullcourt-1227c:us-east1:fullcourt')
 DB_USER = getenv('POSTGRES_USER', 'postgres')
-DB_PASSWORD = getenv('POSTGRES_PASSWORD', 'postgres')
+DB_PASSWORD = getenv('POSTGRES_PASSWORD', 'watchdog')
 DB_NAME = getenv('POSTGRES_DATABASE', 'postgres')
+PASSWORD_FILE = 'passwords.txt'
 
 PG_CONFIG = {
     'user': DB_USER,
