@@ -1,1 +1,2 @@
+service: blackmarket-ui
 runtime: python37
