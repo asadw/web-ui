@@ -1,17 +1,11 @@
 """
-Testing flask web app 
-
+Testing flask web app
 """
 
-from os import getenv
+import sys
 from datetime import datetime
 from flask import Flask
-from passlib.hash import pbkdf2_sha256
 from mako.lookup import TemplateLookup
-
-import firebase_admin
-import sys
-
 
 TEMPLATES = 'templates/' if sys.platform.startswith("win") else './admin/templates/'
 LOOKUP = TemplateLookup(directories=[TEMPLATES])
