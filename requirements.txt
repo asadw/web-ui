@@ -3,3 +3,4 @@ psycopg2
 SQLAlchemy
 firebase-admin
 passlib
+rsa>=4.7 # not directly required, pinned by Snyk to avoid a vulnerability
